@@ -1,4 +1,5 @@
 const express = require('express')
+const res = require('express/lib/response')
 const router = express.Router()
 
 // variables
@@ -59,7 +60,6 @@ const products = [{
 const getProducts = (req, res, next) => {
     res.json(products)
 }
-
 const addProducts = (req, res, next) => {
     const reuestAddProduct = {
         id: products.length + 1,
@@ -70,9 +70,19 @@ const addProducts = (req, res, next) => {
     res.status(201).json(req.body)
     console.log(products);
 }
+const getProductById = (req, res, next) => {
+    const i = products.findIndex(item => {
+        return item.id === req.params.id
+    })
+    res.json(products[i])
+}
 
 
-router.get('/', getProducts)
+// 'get' express
+router.get('/', getProducts) // get all product :D
+router.get('/:id', getProductById) // get 'product' of 'products' by id
+
+// 'post' express
 router.post('/', addProducts)
 
 module.exports = router
