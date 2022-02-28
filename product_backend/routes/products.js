@@ -72,7 +72,7 @@ const addProducts = (req, res, next) => {
 }
 const getProductById = (req, res, next) => {
     const i = products.findIndex(item => {
-        return item.id === req.params.id
+        return item.id === parseInt(req.params.id)
     })
     res.json(products[i])
 }
