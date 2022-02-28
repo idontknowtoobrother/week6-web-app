@@ -61,7 +61,12 @@ const getProducts = (req, res, next) => {
 }
 
 const addProducts = (req, res, next) => {
-    products.push(req.body)
+    const reuestAddProduct = {
+        id: products.length + 1,
+        name: req.body.name,
+        price: req.body.price
+    }
+    products.push(reuestAddProduct)
     res.status(201).json(req.body)
     console.log(products);
 }
