@@ -68,7 +68,6 @@ const addProducts = (req, res, next) => {
     }
     products.push(reuestAddProduct)
     res.status(201).json(reuestAddProduct)
-    console.log(products);
 }
 const getProductById = (req, res, next) => {
     const i = products.findIndex(item => {
@@ -99,7 +98,6 @@ const updateProductById = (req, res, next) => {
         price: req.body.price
     }
     res.status(201).json(products[i])
-    console.log(products);
 }
 const deleteProductById = (req, res, next) => {
     const i = products.findIndex(product => product.id == req.params.id)
@@ -115,8 +113,6 @@ const deleteProductById = (req, res, next) => {
         code: 204,
         status: `product id:${i} already deleted :D`
     })
-
-    console.log(products);
 }
 
 
