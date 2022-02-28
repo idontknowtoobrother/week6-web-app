@@ -111,8 +111,8 @@ const deleteProductById = (req, res, next) => {
         return
     }
     products.splice(i, 1)
-    res.status(201).json({
-        code: 201,
+    res.status(204).json({
+        code: 204,
         status: `product id:${i} already deleted :D`
     })
 
