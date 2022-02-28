@@ -67,7 +67,7 @@ const addProducts = (req, res, next) => {
         price: req.body.price
     }
     products.push(reuestAddProduct)
-    res.status(201).json(req.body)
+    res.status(201).json(reuestAddProduct)
     console.log(products);
 }
 const getProductById = (req, res, next) => {
