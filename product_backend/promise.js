@@ -9,17 +9,27 @@ const eventPromise = (number) => {
 }
 
 
-const promisList = []
-promisList.push(eventPromise(5))
-promisList.push(eventPromise(2))
-promisList.push(eventPromise(1))
-promisList.push(eventPromise(15))
 
+async function run() {
 
-promisList.forEach(proms => {
-    proms.then(val => {
-        console.log(val)
-    }).catch(err => {
+    try {
+        const firstProms = eventPromise(5)
+        const firstVal = await firstProms
+        console.log(firstVal)
+    } catch (err) {
         console.log(err)
-    })
-})
+    }
+
+    try {
+        const secondProms = eventPromise(2)
+        const secondeVal = await secondProms
+        console.log(secondeVal)
+    } catch (err) {
+        console.log(err)
+    }
+    
+
+}
+
+
+run()
