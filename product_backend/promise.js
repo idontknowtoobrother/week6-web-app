@@ -9,20 +9,17 @@ const eventPromise = (number) => {
 }
 
 
-eventPromise(5).then(val => {
-    console.log(val)
-}).catch(val => {
-    console.log(val)
-})
+const promisList = []
+promisList.push(eventPromise(5))
+promisList.push(eventPromise(2))
+promisList.push(eventPromise(1))
+promisList.push(eventPromise(15))
 
-eventPromise(2).then(val => {
-    console.log(val)
-}).catch(val => {
-    console.log(val)
-})
 
-eventPromise(1).then(val => {
-    console.log(val)
-}).catch(val => {
-    console.log(val)
+promisList.forEach(proms => {
+    proms.then(val => {
+        console.log(val)
+    }).catch(err => {
+        console.log(err)
+    })
 })
