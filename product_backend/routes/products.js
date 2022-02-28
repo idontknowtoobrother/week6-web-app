@@ -74,7 +74,33 @@ const getProductById = (req, res, next) => {
     const i = products.findIndex(item => {
         return item.id == req.params.id
     })
-    res.json(products[i])
+    
+    if (i < 0) {
+        res.status(404).json({
+            description: `not found product at ${req.params.id}`
+        })
+        return
+    }
+    res.status(201).json(products[i])
+}
+const updateProductById = (req, res, next) => { 
+    let i = products.findIndex(product => product.id == req.body.id)
+    if (!products[i]) {
+        res.status(404).json({
+            code: 404,
+            status: `not found product id ${req.body.id}`
+        })
+        return   
+    }
+
+    products[i] = {
+        id: products[i].id,
+        name: req.body.name,
+        price: req.body.price
+    }
+    res.status(201).json(products[i])
+    console.log(products);
+    
 }
 
 
@@ -84,5 +110,8 @@ router.get('/:id', getProductById) // get 'product' of 'products' by id
 
 // 'post' express
 router.post('/', addProducts)
+
+// 'put' express
+router.put('/', updateProductById)
 
 module.exports = router
